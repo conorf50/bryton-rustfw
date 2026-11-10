@@ -53,6 +53,9 @@ bootloader's recovery mode, which this firmware cannot touch (it lives in the in
   If a stock update ever replaced the bootloader, its sum differs: read it with `sudo python3 tools/iaprecover.py
   --boot-sum`, then add `--boot-sum-is 0xNNNNNNNN` (that value) to the write; the probe still runs and must match.
   (This flag also belongs in bryton-S510-mods' docs/recovery.md.)
+  A unit on an older stock OS (R027 seen, BOARD.md 2) has the same bootloader, but the way back below writes R039:
+  first read your own OS area (`sudo python3 tools/iaprecover.py --out FILE`, twice, compared) and keep it outside
+  the repository, since no tool here writes it back.
   The computer will offer to initialise the raw disk: always Ignore or Cancel. Leave the mode by unplugging the cable.
   If the link drops mid-write, redo the write from the start and compare.
 - Expected: the overview (the date, today's card), "BLE" green, then "GPS" blinking.

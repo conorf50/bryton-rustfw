@@ -81,6 +81,9 @@ STM32H747 reference manual (RM0399). Sections are referred to from the code as "
     buffer comes back). Sub 0x04 returns the byte sum of its 128 KB; `iaprecover.py --boot-sum` compares it
     with R039 `iap.bin`. **Seen on the unit (2026-10-22): MATCH (0x00548f3c)**, so the disassembly is of the
     bootloader the unit runs.
+  - **A second unit, on stock OS R027** (2026-11-11): the same sum, 0x00548f3c. Its OS area (tag `R027` at 0x94;
+    two reads of 4 026 368 B, both sha256 `ac5065a0...`) differs from R039's. So R027 and R039 ship one bootloader,
+    or updates never rewrite it (inferred: which one is not known). `iaprecover.py --write` accepts such a unit.
 
 ## 3. Memory
 
